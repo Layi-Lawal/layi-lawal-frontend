@@ -1,0 +1,19 @@
+---
+interface Props {
+  text: string;
+  path: string;
+  variant?: 'filled' | 'outlined';
+}
+
+const { text, path, variant = 'filled' } = Astro.props;
+
+const baseClasses = 'text-center text-xs w-fit p-4 inline-block m-2 font-sans';
+const variantClasses =
+  variant === 'filled'
+    ? 'bg-light border border-light text-dark hover:bg-opacity-20 hover:text-light'
+    : 'border border-light text-light hover:bg-dark';
+---
+
+<a href={path} class={`${baseClasses} ${variantClasses}`}>
+  {text.toUpperCase()}
+</a>

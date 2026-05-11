@@ -1,0 +1,62 @@
+---
+---
+<header class="bg-dark text-light flex flex-row items-center justify-between relative h-14">
+  <a href="/" class="flex items-center">
+    <div class="w-10 inline-block mx-4">
+      <img alt="Layi Lawal & Co logo" src="/images/logo-light-500.png" class="w-full" />
+    </div>
+    <span class="text-xl font-bold">
+      Layi Lawal & Co
+      <span class="xs:hidden lg:inline"> Chartered Accountants</span>
+    </span>
+  </a>
+
+  <div class="mx-4">
+    <button
+      id="menu-btn"
+      class="md:hidden"
+      aria-expanded="false"
+      aria-controls="nav"
+      aria-label="Open navigation menu"
+    >
+      <span class="material-symbols-outlined menu-icon">menu</span>
+      <span class="material-symbols-outlined close-icon hidden">close</span>
+    </button>
+
+    <nav
+      id="nav"
+      class="w-1/2 md:w-auto hidden h-[100vh] md:h-auto top-0 right-0 absolute md:relative py-8 md:p-0 bg-light text-dark md:text-light md:bg-dark flex-col md:flex md:flex-row flex-auto z-10"
+    >
+      <ul class="text-lg text-center flex flex-col md:flex-row items-center justify-evenly h-1/2">
+        <li class="md:mx-8"><a href="/services">Services</a></li>
+        <li class="md:mx-8"><a href="/contact">Contact</a></li>
+        <li class="md:mx-8"><a href="/about">About Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-btn') as HTMLButtonElement;
+  const nav = document.getElementById('nav') as HTMLElement;
+  const menuIcon = btn.querySelector('.menu-icon') as HTMLElement;
+  const closeIcon = btn.querySelector('.close-icon') as HTMLElement;
+
+  btn.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+
+    if (isOpen) {
+      nav.classList.remove('flex');
+      nav.classList.add('hidden');
+    } else {
+      nav.classList.remove('hidden');
+      nav.classList.add('flex');
+    }
+
+    menuIcon.classList.toggle('hidden');
+    closeIcon.classList.toggle('hidden');
+  });
+</script>

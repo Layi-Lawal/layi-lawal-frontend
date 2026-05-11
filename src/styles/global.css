@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #000D3A;
+  --color-light: #9BB6FD;
+  --color-lighter: #C7CFEB;
+
+  --font-sans: "Merriweather Sans", "Graphik", sans-serif;
+  --font-serif: "Merriweather", serif;
+
+  --background-image-hero: url('/images/hero.jpg');
+
+  --breakpoint-xs: 320px;
+}
