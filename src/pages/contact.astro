@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const faqs = [
+  {
+    q: "Do you offer an initial consultation?",
+    a: "Yes — we offer a no-charge initial consultation for all prospective clients. We'll discuss your needs, answer your questions, and advise on the best approach before any engagement is agreed.",
+  },
+  {
+    q: "How quickly do you respond to enquiries?",
+    a: "We aim to respond to all enquiries within one business day. For urgent matters, please call us directly.",
+  },
+  {
+    q: "Do you work with clients outside Lagos?",
+    a: "Yes. While we are based in Lagos, we work with clients across Nigeria and can conduct most of our work remotely where appropriate.",
+  },
+  {
+    q: "What size of organisation do you typically work with?",
+    a: "We work with organisations of all sizes — from sole traders and early-stage startups to listed companies and multinational subsidiaries. Our practice is structured to give each client appropriate attention regardless of size.",
+  },
+  {
+    q: "Are your fees fixed or hourly?",
+    a: "It depends on the nature of the engagement. Recurring services such as bookkeeping and payroll are typically fixed-fee. Advisory and audit engagements are usually scoped and quoted in advance so there are no billing surprises.",
+  },
+];
+---
+
+<Layout
+  title="Contact Us"
+  description="Get in touch with Layi Lawal & Co Chartered Accountants in Lagos. Make an enquiry, call us, or visit our office."
+  variant="inner"
+  pageTitle="Get in Touch"
+  pageSubtitle="We offer a no-charge initial consultation. Tell us about your organisation and what you need — we'll respond within one business day."
+  breadcrumbs={[
+    { label: 'Home', href: '/' },
+    { label: 'Contact' },
+  ]}
+>
+
+  <!-- ═══════════════════════════════════════════════════
+       FORM + CONTACT DETAILS
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface" aria-label="Enquiry form and contact details">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+        <!-- Enquiry form -->
+        <div class="lg:col-span-7">
+          <p class="eyebrow mb-6">Make an Enquiry</p>
+          <h2 class="font-serif text-3xl font-semibold text-navy leading-tight mb-8">
+            Tell us what you need.
+          </h2>
+          <ContactForm />
+        </div>
+
+        <!-- Contact details sidebar -->
+        <aside class="lg:col-span-4 lg:col-start-9 flex flex-col gap-10 lg:pt-20">
+
+          <div>
+            <p class="font-sans text-xs font-semibold uppercase tracking-widest text-ink-muted/60 mb-5">Phone</p>
+            <div class="flex flex-col gap-3">
+              <a href="tel:+2348055421762" class="font-serif text-2xl font-medium text-navy hover:text-blue transition-colors duration-150">
+                +234 805 542 1762
+              </a>
+              <a href="tel:+2348130800920" class="font-serif text-2xl font-medium text-navy hover:text-blue transition-colors duration-150">
+                +234 813 080 0920
+              </a>
+            </div>
+          </div>
+
+          <div class="rule border-border"></div>
+
+          <div>
+            <p class="font-sans text-xs font-semibold uppercase tracking-widest text-ink-muted/60 mb-5">Email</p>
+            <a href="mailto:lailawal810@gmail.com" class="font-sans font-light text-base text-ink hover:text-blue transition-colors duration-150">
+              lailawal810@gmail.com
+            </a>
+          </div>
+
+          <div class="rule border-border"></div>
+
+          <div>
+            <p class="font-sans text-xs font-semibold uppercase tracking-widest text-ink-muted/60 mb-5">Office</p>
+            <address class="not-italic font-sans font-light text-base text-ink-muted leading-relaxed">
+              Block 7, Suite 5<br />
+              Oodua Shopping Complex<br />
+              Ojota, Lagos<br />
+              Nigeria
+            </address>
+          </div>
+
+          <div class="rule border-border"></div>
+
+          <div>
+            <p class="font-sans text-xs font-semibold uppercase tracking-widest text-ink-muted/60 mb-5">Office Hours</p>
+            <div class="flex flex-col gap-2 font-sans font-light text-sm text-ink-muted">
+              <div class="flex justify-between">
+                <span>Monday – Friday</span>
+                <span>8:00 am – 5:00 pm</span>
+              </div>
+              <div class="flex justify-between text-ink-muted/50">
+                <span>Saturday</span>
+                <span>By appointment</span>
+              </div>
+              <div class="flex justify-between text-ink-muted/50">
+                <span>Sunday</span>
+                <span>Closed</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       GOOGLE MAPS EMBED
+  ═══════════════════════════════════════════════════ -->
+  <section class="bg-surface-alt" aria-label="Office location map">
+    <div class="container-site py-0">
+      <div class="border border-border overflow-hidden" style="height: 400px;">
+        <iframe
+          title="Layi Lawal & Co office location — Oodua Shopping Complex, Ojota, Lagos"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.0!2d3.3841!3d6.5861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8d9e!2sOodua+Shopping+Complex%2C+Ojota%2C+Lagos!5e0!3m2!1sen!2sng!4v1"
+          width="100%"
+          height="400"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+    <div class="container-site py-5">
+      <p class="font-sans font-light text-xs text-ink-muted">
+        Block 7, Suite 5, Oodua Shopping Complex, Ojota, Lagos, Nigeria &nbsp;·&nbsp;
+        <a
+          href="https://maps.google.com/?q=Oodua+Shopping+Complex+Ojota+Lagos"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue hover:underline"
+        >
+          Open in Google Maps →
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       FAQ
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface" aria-label="Frequently asked questions">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+        <div class="lg:col-span-4">
+          <p class="eyebrow mb-6">FAQs</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-semibold text-navy leading-tight">
+            Common questions.
+          </h2>
+        </div>
+
+        <div class="lg:col-span-7 lg:col-start-6">
+          <dl class="flex flex-col">
+            {faqs.map(faq => (
+              <div class="border-t border-border">
+                <details class="group py-6">
+                  <summary class="flex items-center justify-between cursor-pointer list-none">
+                    <dt class="font-serif text-lg font-semibold text-navy leading-snug pr-6">{faq.q}</dt>
+                    <svg class="w-5 h-5 text-ink-muted shrink-0 transition-transform duration-200 group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </summary>
+                  <dd class="font-sans font-light text-sm text-ink-muted leading-relaxed pt-4 pr-10">
+                    {faq.a}
+                  </dd>
+                </details>
+              </div>
+            ))}
+            <div class="border-t border-border"></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -2,18 +2,33 @@
 interface Props {
   text: string;
   path: string;
-  variant?: 'filled' | 'outlined';
+  variant?: 'primary' | 'ghost' | 'outline-light' | 'outline-dark';
+  size?: 'sm' | 'md' | 'lg';
+  external?: boolean;
 }
 
-const { text, path, variant = 'filled' } = Astro.props;
+const { text, path, variant = 'primary', size = 'md', external = false } = Astro.props;
 
-const baseClasses = 'text-center text-xs w-fit p-4 inline-block m-2 font-sans';
-const variantClasses =
-  variant === 'filled'
-    ? 'bg-light border border-light text-dark hover:bg-opacity-20 hover:text-light'
-    : 'border border-light text-light hover:bg-dark';
+const base = 'inline-block font-sans font-medium tracking-wide transition-all duration-200';
+
+const sizes = {
+  sm: 'text-xs px-5 py-2.5',
+  md: 'text-sm px-7 py-3.5',
+  lg: 'text-sm px-9 py-4',
+};
+
+const variants = {
+  primary:      'bg-blue text-white hover:bg-blue/90',
+  ghost:        'text-blue border border-blue hover:bg-blue hover:text-white',
+  'outline-light': 'border border-white/30 text-white hover:bg-white hover:text-navy',
+  'outline-dark':  'border border-navy text-navy hover:bg-navy hover:text-white',
+};
 ---
 
-<a href={path} class={`${baseClasses} ${variantClasses}`}>
-  {text.toUpperCase()}
+<a
+  href={path}
+  class={`${base} ${sizes[size]} ${variants[variant]}`}
+  {...external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+>
+  {text}
 </a>

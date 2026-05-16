@@ -1,62 +1,203 @@
 ---
----
-<header class="bg-dark text-light flex flex-row items-center justify-between relative h-14">
-  <a href="/" class="flex items-center">
-    <div class="w-10 inline-block mx-4">
-      <img alt="Layi Lawal & Co logo" src="/images/logo-light-500.png" class="w-full" />
-    </div>
-    <span class="text-xl font-bold">
-      Layi Lawal & Co
-      <span class="xs:hidden lg:inline"> Chartered Accountants</span>
-    </span>
-  </a>
+const path = Astro.url.pathname;
+const isHome = path === '/';
 
-  <div class="mx-4">
+const navLinks = [
+  { label: 'Services', href: '/services' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header
+  id="site-header"
+  class={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isHome ? 'header-transparent' : 'bg-navy'}`}
+>
+  <div class="container-site flex items-center justify-between" style="height: 4.5rem;">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 shrink-0" aria-label="Layi Lawal & Co — Home">
+      <img alt="" src="/images/logo-light-500.png" class="w-8 h-8 object-contain" aria-hidden="true" />
+      <span class="text-white font-sans font-medium text-sm leading-tight tracking-wide">
+        Layi Lawal &amp; Co
+        <span class="hidden lg:inline text-slate font-light"> · Chartered Accountants</span>
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+      {navLinks.map(link => {
+        const isActive = path === link.href || (link.href !== '/' && path.startsWith(link.href));
+        return (
+          <a
+            href={link.href}
+            class={`font-sans text-sm transition-colors duration-150 ${
+              isActive ? 'text-white font-medium' : 'text-slate hover:text-white font-light'
+            }`}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+      <a
+        href="/contact"
+        class="ml-4 font-sans text-sm font-medium px-5 py-2.5 border border-white/25 text-white hover:bg-white hover:text-navy transition-all duration-200"
+      >
+        Make an Enquiry
+      </a>
+    </nav>
+
+    <!-- Mobile hamburger -->
     <button
       id="menu-btn"
-      class="md:hidden"
+      class="md:hidden p-2 -mr-1 text-white z-[60] relative"
       aria-expanded="false"
-      aria-controls="nav"
-      aria-label="Open navigation menu"
+      aria-controls="mobile-drawer"
+      aria-label="Open menu"
     >
-      <span class="material-symbols-outlined menu-icon">menu</span>
-      <span class="material-symbols-outlined close-icon hidden">close</span>
+      <svg id="icon-menu" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
     </button>
-
-    <nav
-      id="nav"
-      class="w-1/2 md:w-auto hidden h-[100vh] md:h-auto top-0 right-0 absolute md:relative py-8 md:p-0 bg-light text-dark md:text-light md:bg-dark flex-col md:flex md:flex-row flex-auto z-10"
-    >
-      <ul class="text-lg text-center flex flex-col md:flex-row items-center justify-evenly h-1/2">
-        <li class="md:mx-8"><a href="/services">Services</a></li>
-        <li class="md:mx-8"><a href="/contact">Contact</a></li>
-        <li class="md:mx-8"><a href="/about">About Us</a></li>
-      </ul>
-    </nav>
   </div>
 </header>
 
+<!-- Spacer for non-home pages (header is fixed) -->
+{!isHome && <div style="height: 4.5rem;"></div>}
+
+<!-- ── Fullscreen mobile drawer ── -->
+<div
+  id="mobile-backdrop"
+  class="fixed inset-0 z-[55] bg-navy-900/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+  aria-hidden="true"
+></div>
+
+<div
+  id="mobile-drawer"
+  role="dialog"
+  aria-label="Navigation menu"
+  aria-modal="true"
+  class="fixed top-0 right-0 bottom-0 z-[58] w-full max-w-sm bg-navy-900 translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col"
+>
+  <!-- Drawer header -->
+  <div class="flex items-center justify-between px-6 border-b border-white/10" style="height: 4.5rem;">
+    <a href="/" class="flex items-center gap-3" aria-label="Home">
+      <img alt="" src="/images/logo-light-500.png" class="w-7 h-7 object-contain" aria-hidden="true" />
+      <span class="text-white font-sans font-medium text-sm">Layi Lawal &amp; Co</span>
+    </a>
+    <button
+      id="drawer-close"
+      class="p-2 -mr-1 text-slate hover:text-white transition-colors"
+      aria-label="Close menu"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Nav links -->
+  <nav class="flex-1 overflow-y-auto px-6 py-8 flex flex-col" aria-label="Mobile navigation">
+    <ul class="flex flex-col gap-1 flex-1">
+      {navLinks.map(link => {
+        const isActive = path === link.href || (link.href !== '/' && path.startsWith(link.href));
+        return (
+          <li>
+            <a
+              href={link.href}
+              class={`flex items-center justify-between py-4 border-b border-white/8 font-sans text-lg transition-colors duration-150 ${
+                isActive ? 'text-white font-medium' : 'text-slate hover:text-white font-light'
+              }`}
+            >
+              {link.label}
+              <svg class="w-4 h-4 opacity-30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+              </svg>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+
+    <!-- CTA at bottom of drawer -->
+    <div class="pt-8 mt-auto">
+      <a
+        href="/contact"
+        class="block w-full font-sans font-medium text-sm text-center bg-blue text-white py-4 hover:bg-blue/85 transition-colors duration-200"
+      >
+        Make an Enquiry
+      </a>
+      <div class="flex flex-col gap-2 mt-6 pt-6 border-t border-white/10">
+        <a href="tel:+2348055421762" class="font-sans font-light text-sm text-slate hover:text-white transition-colors">+234 805 542 1762</a>
+        <a href="tel:+2348130800920" class="font-sans font-light text-sm text-slate hover:text-white transition-colors">+234 813 080 0920</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .header-transparent { background: transparent; }
+  .header-solid {
+    background: #0D1F4E;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.07);
+  }
+</style>
+
 <script>
-  const btn = document.getElementById('menu-btn') as HTMLButtonElement;
-  const nav = document.getElementById('nav') as HTMLElement;
-  const menuIcon = btn.querySelector('.menu-icon') as HTMLElement;
-  const closeIcon = btn.querySelector('.close-icon') as HTMLElement;
+  const header     = document.getElementById('site-header') as HTMLElement;
+  const btn        = document.getElementById('menu-btn') as HTMLButtonElement;
+  const drawer     = document.getElementById('mobile-drawer') as HTMLElement;
+  const backdrop   = document.getElementById('mobile-backdrop') as HTMLElement;
+  const drawerClose = document.getElementById('drawer-close') as HTMLButtonElement;
+  const iconMenu   = document.getElementById('icon-menu') as HTMLElement;
+  const iconClose  = document.getElementById('icon-close') as HTMLElement;
+
+  const isHome = window.location.pathname === '/';
+
+  // Transparent → solid on scroll (home only)
+  if (isHome) {
+    const update = () => {
+      const solid = window.scrollY > 60;
+      header.classList.toggle('header-solid', solid);
+      header.classList.toggle('header-transparent', !solid);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+  function openMenu() {
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Close menu');
+    drawer.classList.remove('translate-x-full');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+    iconMenu.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    drawerClose.focus();
+  }
+
+  function closeMenu() {
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Open menu');
+    drawer.classList.add('translate-x-full');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+    iconMenu.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    document.body.style.overflow = '';
+    btn.focus();
+  }
 
   btn.addEventListener('click', () => {
-    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+  });
+  drawerClose.addEventListener('click', closeMenu);
+  backdrop.addEventListener('click', closeMenu);
 
-    btn.setAttribute('aria-expanded', String(!isOpen));
-    btn.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
-
-    if (isOpen) {
-      nav.classList.remove('flex');
-      nav.classList.add('hidden');
-    } else {
-      nav.classList.remove('hidden');
-      nav.classList.add('flex');
-    }
-
-    menuIcon.classList.toggle('hidden');
-    closeIcon.classList.toggle('hidden');
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') closeMenu();
   });
 </script>

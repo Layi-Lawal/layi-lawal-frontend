@@ -1,17 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
 @import "tailwindcss";
 
 @theme {
-  --color-dark: #000D3A;
-  --color-light: #9BB6FD;
-  --color-lighter: #C7CFEB;
+  /* ── Core Palette ──────────────────────────────────── */
+  --color-navy:         #0D1F4E;
+  --color-navy-800:     #162B6E;
+  --color-navy-900:     #081230;
 
-  --font-sans: "Merriweather Sans", "Graphik", sans-serif;
-  --font-serif: "Merriweather", serif;
+  --color-blue:         #4A90D9;
+  --color-blue-light:   #EBF4FF;
+  --color-blue-mid:     #B8D4F5;
 
-  --background-image-hero: url('/images/hero.jpg');
+  --color-surface:      #FFFFFF;
+  --color-surface-alt:  #F5F6F8;
 
+  --color-ink:          #1A1F3A;
+  --color-ink-muted:    #6B7280;
+  --color-slate:        #A8B4CC;
+
+  --color-border:       #E5E8F0;
+
+  /* ── Typography ────────────────────────────────────── */
+  --font-sans:    "Outfit", system-ui, sans-serif;
+  --font-serif:   "Cormorant Garamond", "Georgia", serif;
+
+  /* ── Breakpoints ───────────────────────────────────── */
   --breakpoint-xs: 320px;
+}
+
+/* ── Base Resets ─────────────────────────────────────── */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-surface);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+  }
+}
+
+/* ── Layout Utilities ────────────────────────────────── */
+@layer components {
+  .container-site {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1.5rem, 5vw, 5rem);
+    padding-right: clamp(1.5rem, 5vw, 5rem);
+  }
+
+  .section-pad {
+    padding-top: clamp(4.5rem, 9vw, 7.5rem);
+    padding-bottom: clamp(4.5rem, 9vw, 7.5rem);
+  }
+
+  /* Small uppercase eyebrow label */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-blue);
+  }
+
+  .eyebrow-light {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  /* Horizontal rule */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .rule-dark {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }

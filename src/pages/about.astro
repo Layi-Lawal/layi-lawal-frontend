@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import StatBlock from '../components/StatBlock.astro';
+import ClientLogos from '../components/ClientLogos.astro';
+
+const values = [
+  {
+    title: "Independence",
+    body: "Our audit opinions and advisory conclusions are never compromised by client pressure or commercial interest. The value of our work depends entirely on our independence.",
+  },
+  {
+    title: "Integrity",
+    body: "We hold ourselves to the standards we audit against. Every engagement is conducted with honesty, transparency, and unwavering professional ethics.",
+  },
+  {
+    title: "Excellence",
+    body: "We bring technical depth and careful attention to every piece of work — whether it is a statutory audit for a listed company or a payroll service for a growing SME.",
+  },
+];
+
+const credentials = [
+  {
+    body: "Financial Reporting Council (FRC) of Nigeria",
+    detail: "Licensed to conduct statutory audit engagements on public interest entities.",
+  },
+  {
+    body: "Institute of Chartered Accountants of Nigeria (ICAN)",
+    detail: "Full membership — Associate Chartered Accountant (ACA).",
+  },
+  {
+    body: "Chartered Institute of Taxation of Nigeria (CITN)",
+    detail: "Registered tax practitioner in Nigeria.",
+  },
+];
+---
+
+<Layout
+  title="About the Firm"
+  description="Learn about Layi Lawal & Co Chartered Accountants — our history, our principal, and the values that guide our practice."
+  variant="inner"
+  pageTitle="About the Firm"
+  pageSubtitle="An independent chartered accountancy practice led by Lawal Olayiwola Nasir (B.Sc, ACA, ACPIN) — over 25 years of professional experience, now in private practice in Lagos."
+  breadcrumbs={[
+    { label: 'Home', href: '/' },
+    { label: 'About' },
+  ]}
+>
+
+  <!-- ═══════════════════════════════════════════════════
+       FIRM STORY
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface" aria-label="Our story">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+        <div class="lg:col-span-7">
+          <p class="eyebrow mb-6">Our Story</p>
+          <h2 class="font-serif text-4xl md:text-5xl font-semibold text-navy leading-tight mb-8">
+            Built on practice, not promises.
+          </h2>
+          <div class="flex flex-col gap-5 font-sans font-light text-base text-ink-muted leading-relaxed">
+            <p>
+              Layi Lawal & Co is the private practice of Lawal Olayiwola Nasir (B.Sc, ACA, ACPIN), whose professional career in accountancy spans over 25 years — built across a range of practices and collaborative engagements before establishing this firm. That breadth of experience — across disciplines, client types, and sectors — is what the firm brings to every mandate it takes on.
+            </p>
+            <p>
+              The conviction that has shaped everything from the beginning is simple: small and mid-sized organisations in Nigeria deserve the same quality of professional financial service that the largest enterprises receive. That standard has never been compromised to win or retain business.
+            </p>
+            <p>
+              Today, the firm provides the full range of accountancy, audit, tax, advisory, and insolvency services to a diverse portfolio — listed companies, multinationals, growing SMEs, NGOs, and private individuals — across industries from banking and manufacturing to oil and gas, real estate, and technology.
+            </p>
+            <p>
+              We remain an independent practice. That independence is not a limitation — it is the most important thing we offer.
+            </p>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="lg:col-span-4 lg:col-start-9 flex flex-col gap-10 lg:pt-16">
+          <StatBlock value="25+" label="Years of experience" />
+          <div class="rule border-border"></div>
+          <StatBlock value="500+" label="Clients served" />
+          <div class="rule border-border"></div>
+          <StatBlock value="10+" label="Industries served" />
+          <div class="rule border-border"></div>
+          <StatBlock value="5" label="Service areas" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       PRINCIPAL
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface-alt" aria-label="Principal partner">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+        <!-- Photo placeholder -->
+        <div class="lg:col-span-4 order-2 lg:order-1">
+          <div class="aspect-3/4 bg-navy/5 border border-border flex flex-col items-center justify-center gap-3 text-center p-8">
+            <svg class="w-12 h-12 text-border" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+            <p class="font-sans font-light text-xs text-ink-muted leading-relaxed">
+              Principal photograph<br /><em>pre-launch requirement</em>
+            </p>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="lg:col-span-7 lg:col-start-6 order-1 lg:order-2">
+          <p class="eyebrow mb-6">The Principal</p>
+          <h2 class="font-serif text-4xl md:text-5xl font-semibold text-navy leading-tight mb-2">
+            Lawal Olayiwola Nasir
+          </h2>
+          <p class="font-sans font-light text-base text-ink-muted mb-8">
+            B.Sc, ACA, ACPIN &nbsp;·&nbsp; Principal, Layi Lawal &amp; Co
+          </p>
+
+          <div class="flex flex-col gap-5 font-sans font-light text-base text-ink-muted leading-relaxed mb-10">
+            <p>
+              Lawal Olayiwola Nasir brings over 25 years of professional experience in accountancy — accumulated across several practices and collaborative engagements before establishing his own firm. He holds a Bachelor of Science degree, is an Associate of the Institute of Chartered Accountants of Nigeria (ACA), and is registered with the Chartered Institute of Taxation of Nigeria (CITN).
+            </p>
+            <p>
+              His practice encompasses the full scope of accountancy, audit, tax, advisory, and insolvency work — with particular depth in statutory audit under CAMA 2020, Nigerian tax compliance and dispute resolution, and advisory mandates for M&A transactions and business restructurings.
+            </p>
+            <p>
+              His approach to client relationships is direct and personal. He believes the principal of a practice should remain accessible to its clients — not insulated behind layers of management. Every engagement receives his professional oversight from inception to completion.
+            </p>
+          </div>
+
+          <!-- Credentials list -->
+          <div class="flex flex-col gap-4">
+            <p class="font-sans text-xs font-semibold uppercase tracking-widest text-ink-muted/60 mb-2">
+              Professional registrations
+            </p>
+            {credentials.map(c => (
+              <div class="border-t border-border pt-4">
+                <p class="font-sans font-medium text-sm text-navy mb-1">{c.body}</p>
+                <p class="font-sans font-light text-xs text-ink-muted">{c.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       VALUES
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-navy" aria-label="Our values">
+    <div class="container-site">
+      <p class="eyebrow-light mb-12">How We Work</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {values.map((v, i) => (
+          <div class="border-t border-white/15 pt-8 flex flex-col gap-4">
+            <span class="font-serif text-5xl font-light text-white/25 leading-none select-none">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="font-serif text-2xl font-semibold text-white leading-tight">{v.title}</h3>
+            <p class="font-sans font-light text-sm text-slate leading-relaxed">{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CLIENT LOGOS
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface-alt" aria-label="Clients we have worked with">
+    <div class="container-site">
+      <ClientLogos />
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CTA
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface" aria-label="Get in touch">
+    <div class="container-site">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 max-w-4xl">
+        <div>
+          <h2 class="font-serif text-3xl md:text-4xl font-semibold text-navy leading-tight mb-3">
+            Ready to work with us?
+          </h2>
+          <p class="font-sans font-light text-base text-ink-muted max-w-md leading-relaxed">
+            We offer an initial consultation at no charge. Get in touch and we'll respond within one business day.
+          </p>
+        </div>
+        <Button text="Make an Enquiry" path="/contact" variant="primary" size="lg" />
+      </div>
+    </div>
+  </section>
+
+</Layout>

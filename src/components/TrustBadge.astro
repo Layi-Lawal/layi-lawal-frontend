@@ -1,0 +1,20 @@
+---
+interface Props {
+  label: string;
+  detail?: string;
+  light?: boolean;
+}
+
+const { label, detail, light = true } = Astro.props;
+---
+
+<div class="flex flex-col gap-1">
+  <span class={`font-sans font-medium text-sm tracking-wide ${light ? 'text-white' : 'text-navy'}`}>
+    {label}
+  </span>
+  {detail && (
+    <span class={`font-sans font-light text-xs ${light ? 'text-slate' : 'text-ink-muted'}`}>
+      {detail}
+    </span>
+  )}
+</div>

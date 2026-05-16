@@ -1,0 +1,28 @@
+---
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  lead?: string;
+  align?: 'left' | 'center';
+  light?: boolean;
+}
+
+const { eyebrow, heading, lead, align = 'center', light = false } = Astro.props;
+const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left';
+const headingColor = light ? 'text-white' : 'text-navy';
+const leadColor = light ? 'text-slate' : 'text-ink-muted';
+---
+
+<div class={`max-w-2xl mb-14 ${alignClass}`}>
+  {eyebrow && (
+    <p class={`mb-4 ${light ? 'eyebrow-light' : 'eyebrow'}`}>{eyebrow}</p>
+  )}
+  <h2 class={`font-serif text-4xl md:text-5xl font-semibold leading-tight mb-5 ${headingColor}`}>
+    {heading}
+  </h2>
+  {lead && (
+    <p class={`font-sans font-light text-base md:text-lg leading-relaxed ${leadColor}`}>
+      {lead}
+    </p>
+  )}
+</div>

@@ -1,0 +1,76 @@
+---
+interface Props {
+  light?: boolean;
+}
+
+const { light = false } = Astro.props;
+
+// Anonymised client descriptors — replace with real logo <img> tags when assets are available
+const clients = [
+  "Manufacturing Group",
+  "Financial Services Co.",
+  "Development NGO",
+  "Oil & Gas Ltd",
+  "Real Estate Holdings",
+  "Technology Startup",
+  "Healthcare Services",
+  "Listed Retail Company",
+  "Private Equity Fund",
+  "Professional Services Firm",
+  "FMCG Distributor",
+  "Logistics Group",
+];
+
+// Duplicate for seamless loop
+const items = [...clients, ...clients];
+---
+
+<div class="overflow-hidden" aria-label="Clients we have worked with">
+  <p class={`text-center mb-8 ${light ? 'eyebrow-light' : 'eyebrow'}`}>
+    Organisations We Have Worked With
+  </p>
+
+  <div class="relative">
+    <!-- Fade edges -->
+    <div class={`absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none ${light ? 'bg-gradient-to-r from-navy to-transparent' : 'bg-gradient-to-r from-surface-alt to-transparent'}`}></div>
+    <div class={`absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none ${light ? 'bg-gradient-to-l from-navy to-transparent' : 'bg-gradient-to-l from-surface-alt to-transparent'}`}></div>
+
+    <div class="flex marquee-track gap-10">
+      {items.map(client => (
+        <div class={`shrink-0 flex items-center justify-center px-8 py-4 border ${
+          light
+            ? 'border-white/12 text-white/50'
+            : 'border-border text-ink-muted'
+        }`}>
+          <span class="font-sans font-light text-sm whitespace-nowrap">
+            {client}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+</style>
