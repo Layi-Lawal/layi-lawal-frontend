@@ -1,0 +1,36 @@
+---
+import BreadCrumb from './BreadCrumb.astro';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  crumbs?: Crumb[];
+}
+
+const { title, subtitle, crumbs } = Astro.props;
+---
+
+<section class="bg-navy text-white py-20 md:py-28">
+  <div class="container-site">
+    {crumbs && crumbs.length > 0 ? (
+      <div class="mb-6">
+        <BreadCrumb crumbs={crumbs} light={true} />
+      </div>
+    ) : (
+      <p class="eyebrow-light mb-6">Layi Lawal &amp; Co</p>
+    )}
+    <h1 class="font-serif text-4xl md:text-6xl font-semibold leading-tight max-w-3xl mb-5">
+      {title}
+    </h1>
+    {subtitle && (
+      <p class="font-sans font-light text-base md:text-lg text-slate max-w-2xl leading-relaxed">
+        {subtitle}
+      </p>
+    )}
+  </div>
+</section>

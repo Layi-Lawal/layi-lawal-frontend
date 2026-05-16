@@ -1,0 +1,344 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import StatBlock from '../components/StatBlock.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import ClientLogos from '../components/ClientLogos.astro';
+import { services } from '../data/services';
+
+const featuredTestimonial = {
+  quote: "Their advisory work during our acquisition was exceptional. Independent, rigorous, and always available. I recommend them without hesitation to any serious business owner.",
+  name: "Babatunde Adeyemi",
+  role: "Founder",
+  organisation: "Adeyemi Capital Group",
+};
+
+const otherTestimonials = [
+  {
+    quote: "Layi Lawal & Co transformed how we manage our finances. Their audit team is thorough, professional, and genuinely invested in our growth. The level of attention to detail is second to none.",
+    name: "Chukwuemeka Obi",
+    role: "Managing Director",
+    organisation: "Obi & Sons Manufacturing Ltd",
+  },
+  {
+    quote: "We were facing a complex transfer pricing audit with the FIRS and had no idea where to start. The team handled everything — and the outcome exceeded our expectations.",
+    name: "Fatima Al-Hassan",
+    role: "Chief Financial Officer",
+    organisation: "TechBridge Nigeria",
+  },
+];
+
+const clientTypes = [
+  {
+    type: "SMEs & Growing Businesses",
+    body: "Founders and owner-managers who need professional financial oversight without the overhead of an in-house finance team.",
+  },
+  {
+    type: "Corporates & NGOs",
+    body: "Organisations requiring statutory audit, regulatory compliance, and credible financial reporting for boards, donors, and investors.",
+  },
+  {
+    type: "High-Net-Worth Individuals",
+    body: "Business owners and professionals seeking rigorous personal tax planning, investment structuring, and financial advisory.",
+  },
+];
+---
+
+<Layout
+  title="Chartered Accountants in Lagos"
+  description="Layi Lawal & Co Chartered Accountants — audit, tax, advisory, accountancy, and insolvency services for businesses and individuals in Lagos, Nigeria."
+>
+
+  <!-- ═══════════════════════════════════════════════════
+       HERO — full-screen, dark navy
+  ═══════════════════════════════════════════════════ -->
+  <section
+    class="relative min-h-screen flex items-center bg-navy overflow-hidden"
+    aria-label="Hero"
+  >
+    <!-- Subtle background texture -->
+    <div class="absolute inset-0 opacity-[0.03]"
+      style="background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%); background-size: 20px 20px;">
+    </div>
+
+    <!-- Accent gradient bloom -->
+    <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-[0.06]"
+      style="background: radial-gradient(circle, #4A90D9, transparent 70%);">
+    </div>
+
+    <div class="relative container-site pt-36 pb-24 md:pt-44 md:pb-32">
+      <div class="max-w-4xl">
+
+        <!-- Eyebrow -->
+        <p class="eyebrow-light mb-8">
+          Chartered Accountants · Lagos, Nigeria
+        </p>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold text-white leading-[1.05] mb-8 tracking-tight">
+          Financial<br />
+          <em class="not-italic text-blue-mid">precision</em><br />
+          for organisations<br class="hidden md:block" />
+          that demand more.
+        </h1>
+
+        <!-- Sub-copy -->
+        <p class="font-sans font-light text-base md:text-lg text-slate max-w-xl leading-relaxed mb-12">
+          Audit, tax, advisory, accountancy, and insolvency services — delivered with rigour,
+          independence, and integrity to SMEs, corporates, and NGOs across Nigeria.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap items-center gap-4 mb-16">
+          <Button text="Make an Enquiry" path="/contact" variant="primary" size="lg" />
+          <a href="/services" class="font-sans font-light text-sm text-slate hover:text-white transition-colors duration-150 flex items-center gap-2">
+            Our services
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Regulatory credentials -->
+        <div class="flex flex-wrap items-center gap-6 pt-8 border-t border-white/10">
+          <span class="font-sans font-light text-xs text-slate/50 uppercase tracking-widest">Regulated by</span>
+          <div class="flex flex-wrap gap-x-6 gap-y-2 items-center">
+            <span class="font-sans text-sm font-medium text-white/70">FRC Licensed</span>
+            <span class="text-white/15">·</span>
+            <span class="font-sans text-sm font-medium text-white/70">ICAN Registered</span>
+            <span class="text-white/15">·</span>
+            <span class="font-sans text-sm font-medium text-white/70">CITN Registered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       FIRM INTRO — two-column: statement + stats
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface" aria-label="About the firm">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+        <!-- Statement -->
+        <div class="lg:col-span-7">
+          <p class="eyebrow mb-6">Who We Are</p>
+          <p class="font-serif text-3xl md:text-4xl text-navy font-medium leading-snug mb-6">
+            An independent chartered accountancy practice built on technical rigour and genuine client relationships.
+          </p>
+          <p class="font-sans font-light text-base text-ink-muted leading-relaxed mb-4">
+            Led by Lawal Olayiwola Nasir (B.Sc, ACA, ACPIN), whose career in professional accountancy spans over 25 years across firms, industry, and private practice, Layi Lawal & Co brings that depth of experience to every client — from listed companies and multinationals to growing SMEs, NGOs, and private individuals.
+          </p>
+          <p class="font-sans font-light text-base text-ink-muted leading-relaxed mb-10">
+            We hold ourselves to the same standards we audit against. Independence is not just a regulatory requirement for us — it is the foundation of every engagement we take on.
+          </p>
+          <a href="/about" class="font-sans text-sm font-medium text-navy border-b border-navy/40 pb-0.5 hover:border-navy transition-colors duration-150">
+            Learn more about the firm →
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="lg:col-span-4 lg:col-start-9 flex flex-col gap-10 lg:pt-14">
+          <StatBlock value="25+" label="Years of experience" />
+          <div class="rule w-full border-border"></div>
+          <StatBlock value="500+" label="Clients served" />
+          <div class="rule w-full border-border"></div>
+          <StatBlock value="5" label="Service disciplines" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SERVICES — numbered, minimal grid
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface-alt" aria-label="Services">
+    <div class="container-site">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+        <div>
+          <p class="eyebrow mb-4">What We Do</p>
+          <h2 class="font-serif text-4xl md:text-5xl font-semibold text-navy leading-tight max-w-lg">
+            Five service pillars. One trusted partnership.
+          </h2>
+        </div>
+        <a href="/services" class="font-sans text-sm font-medium text-navy border-b border-navy/40 pb-0.5 hover:border-navy transition-colors duration-150 shrink-0">
+          All services →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+        {services.map((s, i) => (
+          <div class="bg-surface-alt">
+            <ServiceCard slug={s.slug} name={s.name} summary={s.summary} index={i} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       AUTHORITY — dark navy, regulatory standing
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-navy" aria-label="Regulatory standing and client types">
+    <div class="container-site">
+
+      <!-- Credentials -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 pb-16 border-b border-white/10">
+        <div class="flex flex-col gap-3">
+          <p class="eyebrow-light">FRC</p>
+          <p class="font-serif text-2xl font-medium text-white leading-tight">Financial Reporting Council</p>
+          <p class="font-sans font-light text-sm text-slate leading-relaxed">
+            Licensed by the FRC of Nigeria — authorised to carry out statutory audit engagements across public interest entities.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <p class="eyebrow-light">ICAN</p>
+          <p class="font-serif text-2xl font-medium text-white leading-tight">Institute of Chartered Accountants</p>
+          <p class="font-sans font-light text-sm text-slate leading-relaxed">
+            Full membership of ICAN — Nigeria's premier professional accountancy body, upholding the highest standards of practice.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <p class="eyebrow-light">CITN</p>
+          <p class="font-serif text-2xl font-medium text-white leading-tight">Chartered Institute of Taxation</p>
+          <p class="font-sans font-light text-sm text-slate leading-relaxed">
+            Registered with CITN — the authoritative body for tax professionals practising in Nigeria.
+          </p>
+        </div>
+      </div>
+
+      <!-- Who we serve -->
+      <div>
+        <p class="eyebrow-light mb-10">Who We Serve</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {clientTypes.map(ct => (
+            <div class="border-t border-white/15 pt-7 flex flex-col gap-3">
+              <h3 class="font-serif text-xl font-semibold text-white leading-tight">{ct.type}</h3>
+              <p class="font-sans font-light text-sm text-slate leading-relaxed">{ct.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       TESTIMONIAL — single large featured quote
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface" aria-label="Client testimonial">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+        <!-- Featured quote -->
+        <div class="lg:col-span-7">
+          <p class="eyebrow mb-10">Client Testimonial</p>
+          <TestimonialCard
+            quote={featuredTestimonial.quote}
+            name={featuredTestimonial.name}
+            role={featuredTestimonial.role}
+            organisation={featuredTestimonial.organisation}
+            featured={true}
+          />
+        </div>
+
+        <!-- Secondary quotes -->
+        <div class="lg:col-span-4 lg:col-start-9 flex flex-col gap-8 lg:pt-20">
+          {otherTestimonials.map(t => (
+            <div>
+              <TestimonialCard
+                quote={t.quote}
+                name={t.name}
+                role={t.role}
+                organisation={t.organisation}
+                featured={false}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CLIENT LOGOS CAROUSEL
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface-alt" aria-label="Clients we have worked with">
+    <div class="container-site">
+      <ClientLogos />
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CLIENT PORTAL TEASER
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface-alt" aria-label="Client portal">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="eyebrow mb-6">For Existing Clients</p>
+          <h2 class="font-serif text-4xl md:text-5xl font-semibold text-navy leading-tight mb-6">
+            A dedicated portal for every engagement.
+          </h2>
+          <p class="font-sans font-light text-base text-ink-muted leading-relaxed mb-4">
+            Submit documents securely, track the status of your engagement in real time, and download completed reports — all from a single, secure client portal.
+          </p>
+          <p class="font-sans font-light text-base text-ink-muted leading-relaxed mb-10">
+            Most small practices rely on email chains and physical handoffs. We built a better way — because your financial information deserves proper handling.
+          </p>
+          <a href="/contact" class="font-sans text-sm font-medium text-navy border-b border-navy/40 pb-0.5 hover:border-navy transition-colors duration-150">
+            Enquire about portal access →
+          </a>
+        </div>
+
+        <!-- Visual representation of the portal -->
+        <div class="border border-border bg-surface p-8 flex flex-col gap-4">
+          <div class="flex items-center justify-between pb-4 border-b border-border">
+            <span class="font-sans font-medium text-sm text-navy">Client Portal</span>
+            <span class="font-sans text-xs text-ink-muted bg-surface-alt px-3 py-1.5">Secure Access</span>
+          </div>
+          {[
+            { label: "Document Submission", status: "Ready to upload", dot: "bg-blue" },
+            { label: "Engagement Status", status: "In review", dot: "bg-blue/40" },
+            { label: "Report Downloads", status: "1 report ready", dot: "bg-green-500" },
+            { label: "Notifications", status: "2 new alerts", dot: "bg-blue" },
+          ].map(item => (
+            <div class="flex items-center justify-between py-3 border-b border-border/60 last:border-0">
+              <div class="flex items-center gap-3">
+                <div class={`w-2 h-2 rounded-full ${item.dot} shrink-0`}></div>
+                <span class="font-sans text-sm text-ink">{item.label}</span>
+              </div>
+              <span class="font-sans text-xs text-ink-muted">{item.status}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       FINAL CTA
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-navy" aria-label="Call to action">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <p class="eyebrow-light mb-6">Ready to begin?</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-semibold text-white leading-tight mb-6">
+          Let's talk about your financial needs.
+        </h2>
+        <p class="font-sans font-light text-base text-slate leading-relaxed mb-10 max-w-lg">
+          We offer an initial consultation at no charge. Tell us about your organisation and what you need — we'll respond within one business day.
+        </p>
+        <div class="flex flex-wrap gap-4 items-center">
+          <Button text="Make an Enquiry" path="/contact" variant="primary" size="lg" />
+          <div class="flex flex-col gap-0.5">
+            <a href="tel:+2348055421762" class="font-sans font-light text-sm text-slate hover:text-white transition-colors duration-150">+234 805 542 1762</a>
+            <a href="tel:+2348130800920" class="font-sans font-light text-sm text-slate hover:text-white transition-colors duration-150">+234 813 080 0920</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

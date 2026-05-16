@@ -1,0 +1,39 @@
+---
+interface Props {
+  slug: string;
+  name: string;
+  summary: string;
+  index?: number;
+}
+
+const { slug, name, summary, index = 0 } = Astro.props;
+const num = String(index + 1).padStart(2, '0');
+---
+
+<a
+  href={`/services/${slug}`}
+  class="group flex flex-col gap-5 p-8 border border-border hover:border-blue/40 bg-surface hover:bg-blue-light/40 transition-all duration-300"
+  aria-label={`${name} — learn more`}
+>
+  <div class="flex items-start justify-between">
+    <span class="font-serif text-4xl font-light text-navy/25 group-hover:text-blue/50 transition-colors duration-300 leading-none select-none">
+      {num}
+    </span>
+    <svg class="w-4 h-4 text-border group-hover:text-blue transition-all duration-300 mt-1 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+    </svg>
+  </div>
+
+  <div>
+    <h3 class="font-serif text-2xl font-semibold text-navy mb-3 leading-tight">
+      {name}
+    </h3>
+    <p class="font-sans font-light text-sm text-ink-muted leading-relaxed line-clamp-3">
+      {summary}
+    </p>
+  </div>
+
+  <span class="font-sans text-xs font-medium text-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-auto tracking-wide">
+    Learn more →
+  </span>
+</a>

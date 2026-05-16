@@ -1,0 +1,61 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageBanner from '../components/PageBanner.astro';
+import '../styles/global.css';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  variant?: 'default' | 'inner';
+  pageTitle?: string;
+  pageSubtitle?: string;
+  breadcrumbs?: Crumb[];
+}
+
+const {
+  title = 'Layi Lawal & Co',
+  description = 'Layi Lawal & Co Chartered Accountants — audit, tax, advisory, accountancy, and insolvency services in Lagos, Nigeria.',
+  variant = 'default',
+  pageTitle,
+  pageSubtitle,
+  breadcrumbs,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title} | Layi Lawal & Co Chartered Accountants</title>
+    <link rel="icon" type="image/png" href="/images/logo-light-500.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Material Symbols (used on service detail pages) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <Header />
+    {variant === 'inner' && pageTitle && (
+      <PageBanner title={pageTitle} subtitle={pageSubtitle} crumbs={breadcrumbs} />
+    )}
+    <slot />
+    <Footer />
+  </body>
+</html>

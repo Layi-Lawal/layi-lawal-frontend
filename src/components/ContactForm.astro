@@ -1,0 +1,136 @@
+---
+const serviceOptions = [
+  { value: 'audit',        label: 'Audit & Assurance' },
+  { value: 'advisory',     label: 'Advisory' },
+  { value: 'accountancy',  label: 'Accountancy' },
+  { value: 'tax',          label: 'Tax' },
+  { value: 'insolvency',   label: 'Insolvency' },
+  { value: 'unsure',       label: "I'm not sure yet" },
+];
+---
+
+<form
+  data-netlify="true"
+  name="contact"
+  method="POST"
+  class="flex flex-col gap-6"
+>
+  <input type="hidden" name="form-name" value="contact" />
+
+  <!-- Name + Email -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="flex flex-col gap-2">
+      <label for="cf-name" class="font-sans text-xs font-medium uppercase tracking-widest text-ink-muted">
+        Full Name <span class="text-blue" aria-hidden="true">*</span>
+      </label>
+      <input
+        type="text"
+        id="cf-name"
+        name="name"
+        required
+        autocomplete="name"
+        placeholder="Adebayo Okafor"
+        class="border border-border bg-surface px-4 py-3 font-sans font-light text-sm text-ink placeholder:text-slate/50 focus:outline-none focus:border-navy transition-colors duration-150"
+      />
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="cf-email" class="font-sans text-xs font-medium uppercase tracking-widest text-ink-muted">
+        Email Address <span class="text-blue" aria-hidden="true">*</span>
+      </label>
+      <input
+        type="email"
+        id="cf-email"
+        name="email"
+        required
+        autocomplete="email"
+        placeholder="you@company.com"
+        class="border border-border bg-surface px-4 py-3 font-sans font-light text-sm text-ink placeholder:text-slate/50 focus:outline-none focus:border-navy transition-colors duration-150"
+      />
+    </div>
+  </div>
+
+  <!-- Phone -->
+  <div class="flex flex-col gap-2">
+    <label for="cf-phone" class="font-sans text-xs font-medium uppercase tracking-widest text-ink-muted">
+      Phone Number
+    </label>
+    <input
+      type="tel"
+      id="cf-phone"
+      name="phone"
+      autocomplete="tel"
+      placeholder="+234 800 000 0000"
+      class="border border-border bg-surface px-4 py-3 font-sans font-light text-sm text-ink placeholder:text-slate/50 focus:outline-none focus:border-navy transition-colors duration-150"
+    />
+  </div>
+
+  <!-- Service dropdown -->
+  <div class="flex flex-col gap-2">
+    <label for="cf-service" class="font-sans text-xs font-medium uppercase tracking-widest text-ink-muted">
+      Service of Interest
+    </label>
+    <div class="relative">
+      <select
+        id="cf-service"
+        name="service"
+        class="w-full border border-border bg-surface px-4 py-3 font-sans font-light text-sm text-ink focus:outline-none focus:border-navy transition-colors duration-150 appearance-none pr-10"
+      >
+        <option value="" disabled selected>Select a service</option>
+        {serviceOptions.map(s => <option value={s.value}>{s.label}</option>)}
+      </select>
+      <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-muted pointer-events-none" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+      </svg>
+    </div>
+    <!-- Dynamic contextual hint -->
+    <p id="cf-service-hint" class="font-sans font-light text-xs text-ink-muted/70 leading-relaxed hidden mt-1"></p>
+  </div>
+
+  <!-- Message -->
+  <div class="flex flex-col gap-2">
+    <label for="cf-message" class="font-sans text-xs font-medium uppercase tracking-widest text-ink-muted">
+      Message <span class="text-blue" aria-hidden="true">*</span>
+    </label>
+    <textarea
+      id="cf-message"
+      name="message"
+      rows="5"
+      required
+      placeholder="Tell us briefly what you need help with…"
+      class="border border-border bg-surface px-4 py-3 font-sans font-light text-sm text-ink placeholder:text-slate/50 focus:outline-none focus:border-navy transition-colors duration-150 resize-none"
+    ></textarea>
+  </div>
+
+  <div>
+    <button
+      type="submit"
+      class="font-sans font-medium text-sm bg-blue text-white px-8 py-3.5 hover:bg-blue/85 transition-colors duration-200 tracking-wide"
+    >
+      Send Enquiry
+    </button>
+  </div>
+</form>
+
+<script>
+  const select = document.getElementById('cf-service') as HTMLSelectElement;
+  const hint = document.getElementById('cf-service-hint') as HTMLParagraphElement;
+
+  const hints: Record<string, string> = {
+    audit:       'Please briefly describe your organisation type, size, and whether you have had a previous audit.',
+    advisory:    'Please outline the decision or transaction you need advice on, and any relevant timelines.',
+    accountancy: 'Please describe your current accounting setup and the specific records or services you require.',
+    tax:         'Please mention the tax type(s) involved (e.g. company income tax, VAT, personal) and any outstanding obligations.',
+    insolvency:  'Please describe the company\'s current financial position and whether formal proceedings have been initiated.',
+    unsure:      'No problem — just describe your situation in as much detail as you can and we\'ll point you in the right direction.',
+  };
+
+  select.addEventListener('change', () => {
+    const val = select.value;
+    if (val && hints[val]) {
+      hint.textContent = hints[val];
+      hint.classList.remove('hidden');
+    } else {
+      hint.classList.add('hidden');
+    }
+  });
+</script>

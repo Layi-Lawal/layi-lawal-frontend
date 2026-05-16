@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import Button from '../../components/Button.astro';
+import { services } from '../../data/services';
+
+const sectors = [
+  "Banking & Finance", "Oil & Gas", "FMCG & Retail",
+  "NGOs & Development", "Real Estate", "Manufacturing",
+  "Technology & Startups", "Professional Services",
+  "Healthcare", "Education",
+];
+---
+
+<Layout
+  title="Our Services"
+  description="Audit, advisory, accountancy, tax, and insolvency services from Layi Lawal & Co Chartered Accountants in Lagos, Nigeria."
+  variant="inner"
+  pageTitle="Our Services"
+  pageSubtitle="Five service disciplines, delivered with rigour and independence — for businesses, NGOs, and individuals across Nigeria."
+  breadcrumbs={[
+    { label: 'Home', href: '/' },
+    { label: 'Services' },
+  ]}
+>
+
+  <!-- ═══════════════════════════════════════════════════
+       SERVICE GRID
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface" aria-label="Services">
+    <div class="container-site">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border mb-16">
+        {services.map((s, i) => (
+          <div class="bg-surface">
+            <ServiceCard slug={s.slug} name={s.name} summary={s.summary} index={i} />
+          </div>
+        ))}
+      </div>
+
+      <!-- Not sure prompt -->
+      <div class="border border-border p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div>
+          <h2 class="font-serif text-2xl font-semibold text-navy mb-2">Not sure which service you need?</h2>
+          <p class="font-sans font-light text-sm text-ink-muted max-w-md leading-relaxed">
+            Tell us about your organisation and what you're trying to achieve — we'll recommend the right starting point at no charge.
+          </p>
+        </div>
+        <Button text="Make an Enquiry" path="/contact" variant="primary" size="md" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       DIFFERENTIATORS
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-surface-alt" aria-label="Why choose us">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+        <div class="lg:col-span-5">
+          <p class="eyebrow mb-6">What Sets Us Apart</p>
+          <h2 class="font-serif text-4xl md:text-5xl font-semibold text-navy leading-tight">
+            Independent. Integrated. Deep.
+          </h2>
+        </div>
+
+        <div class="lg:col-span-6 lg:col-start-7 flex flex-col gap-8">
+          {[
+            {
+              title: "True independence",
+              body: "As a sole practice, we carry no conflicts from sister firms or affiliate relationships. Our opinions are our own — always.",
+            },
+            {
+              title: "Integrated delivery",
+              body: "Audit, tax, and advisory working from the same understanding of your business means better advice, fewer gaps, and less coordination overhead for you.",
+            },
+            {
+              title: "Regulatory depth",
+              body: "Deep, current knowledge of CAMA 2020, FIRS regulations, IFRS, and Nigerian Standards on Auditing — not delegated to juniors, applied by the principal.",
+            },
+          ].map((item, i) => (
+            <div class="border-t border-border pt-6 flex gap-6">
+              <span class="font-serif text-3xl font-light text-navy/25 leading-none select-none shrink-0 w-8">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <h3 class="font-serif text-xl font-semibold text-navy mb-2">{item.title}</h3>
+                <p class="font-sans font-light text-sm text-ink-muted leading-relaxed">{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTOR EXPERIENCE
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-pad bg-navy" aria-label="Sectors served">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-10">
+        <div class="lg:col-span-5">
+          <p class="eyebrow-light mb-6">Sector Experience</p>
+          <h2 class="font-serif text-4xl font-semibold text-white leading-tight">
+            We understand your industry.
+          </h2>
+        </div>
+        <p class="lg:col-span-5 lg:col-start-8 font-sans font-light text-sm text-slate leading-relaxed">
+          Our client portfolio spans ten industries — giving us the contextual knowledge to audit and advise without a lengthy learning curve.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-8">
+        {sectors.map(s => (
+          <span class="font-sans font-light text-sm text-slate border border-white/15 px-5 py-2.5 hover:border-blue/40 hover:text-white transition-colors duration-200">
+            {s}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
