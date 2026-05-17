@@ -13,6 +13,49 @@ export interface Service {
 
 export const services: Service[] = [
   {
+    slug: "accountancy",
+    name: "Accountancy",
+    tagline: "Accurate, timely financial information at the heart of your business.",
+    icon: "calculate",
+    summary:
+      "From bookkeeping and payroll to management accounts and statutory financial statements, we keep your financial records in order so you can focus on running your business.",
+    description: [
+      "Reliable financial information is the foundation of every well-run business. Our accountancy services are designed to give you accurate, timely records — whether you need day-to-day bookkeeping, monthly management accounts, or full statutory financial statements prepared under IFRS or Nigerian GAAP.",
+      "We work with businesses of all sizes, from sole traders and partnerships to limited liability companies and group structures. Our team is fluent in widely-used accounting platforms including Sage, QuickBooks, and Xero, and can work within your existing systems or help you migrate to a more suitable solution.",
+      "Beyond the numbers, we provide management accounts that are genuinely useful to decision-makers — clear, well-presented reports with commentary that helps you understand what is driving performance and where attention is needed.",
+      "Our payroll service ensures your staff are paid accurately and on time, with all statutory deductions — including PAYE, pension contributions, and the National Housing Fund levy — correctly calculated and remitted.",
+    ],
+    includes: [
+      { icon: "receipt", title: "Bookkeeping", body: "Day-to-day recording of transactions, bank reconciliations, and maintenance of the general ledger." },
+      { icon: "summarize", title: "Management Accounts", body: "Monthly or quarterly management accounts with variance analysis and performance commentary." },
+      { icon: "description", title: "Financial Statements", body: "Preparation of statutory annual accounts under IFRS or Nigerian GAAP, ready for audit and filing." },
+      { icon: "payments", title: "Payroll Management", body: "End-to-end payroll processing including PAYE, pension, NHF, and group life remittances." },
+      { icon: "account_balance", title: "Fixed Asset Register", body: "Maintenance of detailed fixed asset schedules with depreciation calculations and periodic reconciliation." },
+      { icon: "sync_alt", title: "Accounting System Setup", body: "Configuration and migration of accounting software (Sage, QuickBooks, Xero) tailored to your business." },
+    ],
+    clientTypes: [
+      {
+        title: "Start-ups & Early-Stage Businesses",
+        body: "Founders who need their books kept properly from day one, with systems and processes that will scale as the business grows.",
+      },
+      {
+        title: "Established SMEs",
+        body: "Owner-managed businesses requiring reliable management accounts and outsourced finance support without the cost of a full-time finance team.",
+      },
+      {
+        title: "Companies Preparing for Audit",
+        body: "Businesses whose accounts need to be audit-ready — properly reconciled, well-documented, and prepared to the required standard.",
+      },
+    ],
+    processSteps: [
+      { label: "Onboarding", body: "We review your existing records, agree the scope of service, and set up secure access to your accounting systems." },
+      { label: "Recording & Reconciliation", body: "Transactions are recorded accurately, bank accounts reconciled, and any discrepancies investigated promptly." },
+      { label: "Reporting", body: "We prepare and deliver management accounts or statutory statements to the agreed timetable and format." },
+      { label: "Review & Support", body: "We review reports with you, answer queries, and provide ongoing support as your business needs evolve." },
+    ],
+    relatedSlugs: ["audit", "tax"],
+  },
+  {
     slug: "audit",
     name: "Audit",
     tagline: "Independent assurance you and your stakeholders can rely on.",
@@ -95,49 +138,6 @@ export const services: Service[] = [
       { label: "Information Gathering", body: "We collect and review financial data, management information, contracts, and operational records relevant to the engagement." },
       { label: "Analysis & Modelling", body: "Our team builds the analytical framework — financial models, valuation analyses, or risk assessments — underpinning our advice." },
       { label: "Reporting & Presentation", body: "We deliver a clear written report and present our findings to your board or deal team, with time for discussion and questions." },
-    ],
-    relatedSlugs: ["audit", "tax"],
-  },
-  {
-    slug: "accountancy",
-    name: "Accountancy",
-    tagline: "Accurate, timely financial information at the heart of your business.",
-    icon: "calculate",
-    summary:
-      "From bookkeeping and payroll to management accounts and statutory financial statements, we keep your financial records in order so you can focus on running your business.",
-    description: [
-      "Reliable financial information is the foundation of every well-run business. Our accountancy services are designed to give you accurate, timely records — whether you need day-to-day bookkeeping, monthly management accounts, or full statutory financial statements prepared under IFRS or Nigerian GAAP.",
-      "We work with businesses of all sizes, from sole traders and partnerships to limited liability companies and group structures. Our team is fluent in widely-used accounting platforms including Sage, QuickBooks, and Xero, and can work within your existing systems or help you migrate to a more suitable solution.",
-      "Beyond the numbers, we provide management accounts that are genuinely useful to decision-makers — clear, well-presented reports with commentary that helps you understand what is driving performance and where attention is needed.",
-      "Our payroll service ensures your staff are paid accurately and on time, with all statutory deductions — including PAYE, pension contributions, and the National Housing Fund levy — correctly calculated and remitted.",
-    ],
-    includes: [
-      { icon: "receipt", title: "Bookkeeping", body: "Day-to-day recording of transactions, bank reconciliations, and maintenance of the general ledger." },
-      { icon: "summarize", title: "Management Accounts", body: "Monthly or quarterly management accounts with variance analysis and performance commentary." },
-      { icon: "description", title: "Financial Statements", body: "Preparation of statutory annual accounts under IFRS or Nigerian GAAP, ready for audit and filing." },
-      { icon: "payments", title: "Payroll Management", body: "End-to-end payroll processing including PAYE, pension, NHF, and group life remittances." },
-      { icon: "account_balance", title: "Fixed Asset Register", body: "Maintenance of detailed fixed asset schedules with depreciation calculations and periodic reconciliation." },
-      { icon: "sync_alt", title: "Accounting System Setup", body: "Configuration and migration of accounting software (Sage, QuickBooks, Xero) tailored to your business." },
-    ],
-    clientTypes: [
-      {
-        title: "Start-ups & Early-Stage Businesses",
-        body: "Founders who need their books kept properly from day one, with systems and processes that will scale as the business grows.",
-      },
-      {
-        title: "Established SMEs",
-        body: "Owner-managed businesses requiring reliable management accounts and outsourced finance support without the cost of a full-time finance team.",
-      },
-      {
-        title: "Companies Preparing for Audit",
-        body: "Businesses whose accounts need to be audit-ready — properly reconciled, well-documented, and prepared to the required standard.",
-      },
-    ],
-    processSteps: [
-      { label: "Onboarding", body: "We review your existing records, agree the scope of service, and set up secure access to your accounting systems." },
-      { label: "Recording & Reconciliation", body: "Transactions are recorded accurately, bank accounts reconciled, and any discrepancies investigated promptly." },
-      { label: "Reporting", body: "We prepare and deliver management accounts or statutory statements to the agreed timetable and format." },
-      { label: "Review & Support", body: "We review reports with you, answer queries, and provide ongoing support as your business needs evolve." },
     ],
     relatedSlugs: ["audit", "tax"],
   },
